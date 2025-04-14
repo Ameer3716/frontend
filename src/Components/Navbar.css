@@ -1,14 +1,15 @@
+/* Base Navbar Styles */
 .navbar {
   padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background: linear-gradient(135deg, #2a5298, #1e3c72); Complementary blue gradient */
-  color: #fff;
   background-color: #200f36;
   border-radius: 10px;
+  color: #fff;
 }
 
+/* Navbar Brand: icon + text */
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -27,18 +28,20 @@
   color: #ffc107;
 }
 
+/* Navbar Menu (Desktop) */
 .navbar-menu {
   display: flex;
   align-items: center;
   gap: 2rem;
+  transition: max-height 0.3s ease;
 }
 
+/* Individual Links */
 .navbar-link {
-  color:white;
+  color: white;
   text-decoration: none;
-  transition: color 0.2s ease;
   font-weight: 800;
-  
+  transition: color 0.2s ease;
 }
 
 .navbar-link:hover {
@@ -49,6 +52,7 @@
   font-weight: bold;
 }
 
+/* Button */
 .navbar-btn {
   background-color: white;
   color: #4a0c9b;
@@ -62,4 +66,39 @@
 
 .navbar-btn:hover {
   opacity: 0.9;
+}
+
+/* Hamburger Toggle (Menu / X) */
+.navbar-toggle {
+  display: none;            /* hidden on desktop */
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ------------- Media Queries for Responsiveness ------------- */
+
+/* When the screen is 768px or narrower */
+@media (max-width: 768px) {
+  /* We show the hamburger and hide the horizontal menu by default */
+  .navbar-toggle {
+    display: block;
+  }
+
+  /* Hide the menu unless the user toggles it open */
+  .navbar-menu {
+    position: absolute;
+    top: 70px;          /* adjust depending on your navbar height */
+    right: 0;
+    flex-direction: column;
+    background-color: #200f36;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    border-radius: 0 0 10px 10px;
+  }
+
+  /* Expand the menu when .active is toggled */
+  .navbar-menu.active {
+    max-height: 300px;  /* or something large enough to fit all links */
+  }
 }
