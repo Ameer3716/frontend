@@ -79,26 +79,35 @@
 
 /* When the screen is 768px or narrower */
 @media (max-width: 768px) {
-  /* We show the hamburger and hide the horizontal menu by default */
+  /* Show the hamburger toggle */
   .navbar-toggle {
     display: block;
   }
 
-  /* Hide the menu unless the user toggles it open */
+  /* Mobile menu: hide by default */
   .navbar-menu {
     position: absolute;
-    top: 70px;          /* adjust depending on your navbar height */
-    right: 0;
+    top: 70px;          /* adjust this value if your navbar height changes */
+    left: 0;            /* Position the menu to the left */
     flex-direction: column;
     background-color: #200f36;
-    width: 100%;
+    width: 100%;        /* span the full width */
     max-height: 0;
     overflow: hidden;
     border-radius: 0 0 10px 10px;
+    padding: 0 1rem;
   }
 
-  /* Expand the menu when .active is toggled */
+  /* Expand the menu when active */
   .navbar-menu.active {
-    max-height: 300px;  /* or something large enough to fit all links */
+    max-height: 300px;  /* ensure this height fits all your links */
+  }
+
+  /* Optional: Make each link take full width for better mobile UX */
+  .navbar-link,
+  .navbar-btn {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
   }
 }
