@@ -1,0 +1,221 @@
+/* Global Styles */
+.app {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f4f7f6, #e9f2ef);
+    color: #333;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Pricing Plans Section */
+.pricing-plans {
+    max-width: 1400px;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+.pricing-plans-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* Pricing Card Redesign */
+.pricing-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 280px;
+    max-width: 300px;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.pricing-card-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #2a2a2a;
+}
+
+.pricing-card-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #e67e22; /* Accent orange */
+}
+
+.pricing-card-currency {
+    font-size: 2.2rem;
+    vertical-align: middle;
+}
+
+.pricing-card-frequency {
+    font-size: 1rem;
+    margin-left: 0.25rem;
+    color: #888;
+}
+
+.pricing-card-features {
+    margin: 1.5rem 0;
+}
+
+.pricing-card-feature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 0;
+}
+
+.pricing-card-check {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #27ae60; /* Vibrant green */
+    margin-right: 0.5rem;
+}
+
+.pricing-card-btn {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.pricing-card-btn:hover {
+    background-color: #219150;
+}
+
+/* Reviews Section */
+.reviews-section {
+    background: #b8c4da;
+    padding: 4rem 1rem;
+    border-radius: 30px;
+    margin-bottom: 5px;
+}
+
+.reviews-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.reviews-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #f6f3f3;
+}
+
+.reviews-subtitle {
+    text-align: center;
+    color: #f7f2f2;
+    margin-bottom: 3rem;
+}
+
+.reviews-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* Review Card Redesign */
+.review-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    max-width: 350px;
+    flex: 1 1 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.star-rating {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0.75rem;
+    color: #f1c40f;
+}
+
+.review-card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2a2a2a;
+}
+
+.review-card-content {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.review-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.author-name {
+    font-weight: bold;
+    color: #2a2a2a;
+}
+
+.author-role {
+    font-size: 0.875rem;
+    color: #888;
+}
+
+.review-card-date {
+    font-size: 0.875rem;
+    color: #888;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #e67e22;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.scroll-to-top:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+.scroll-top-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+}
+
+/* Global Typography */
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0.5rem 0;
+}

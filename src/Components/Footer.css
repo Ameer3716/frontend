@@ -1,0 +1,77 @@
+.footer {
+  background: linear-gradient(135deg, #E0EAFC, #CFDEF3);  /* Soft pastel blue gradient */
+  color: #2C3E50;            /* Dark blue-gray for contrast */
+  padding: 3rem 0;
+  border-radius: 30px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.footer-brand {
+  /* Additional styling for the brand column if needed */
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-logo-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #2980B9;  /* Calming blue accent */
+}
+
+.footer-logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3ca3e7;  /* Elegant coral accent */
+}
+
+.footer-description {
+  color: #7a9292;  /* Muted gray for softer text */
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.footer-social-link {
+  color: #2C3E50;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-social-link:hover {
+  color: #2980B9;
+}
+
+.footer-contact {
+  /* Additional styling for the contact column if needed */
+}
+
+.footer-heading {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #2C3E50;
+}
+
+.footer-text {
+  margin-bottom: 0.5rem;
+  color: #2C3E50;
+}
