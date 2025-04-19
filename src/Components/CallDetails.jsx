@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 // Animations
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -73,14 +73,18 @@ const CallDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/call-logs", { credentials: "include" })
-      .then((res) => res.json())
+    fetch(`${API_BASE_URL}/api/call-logs`, { credentials: "include" }) // Use template literal
+      .then((res) => {
+          if (!res.ok) { throw new Error(`HTTP error! status: ${res.status}`); }
+          return res.json()
+      })
       .then((data) => {
         setCallLogs(data);
         setLoading(false);
       })
       .catch((err) => {
         console.error("Failed to fetch call logs:", err);
+        // Optionally show notification
         setLoading(false);
       });
   }, []);

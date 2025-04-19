@@ -2,13 +2,14 @@ import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import './PricingCard.css';
 
-const stripePromise = loadStripe('pk_test_51R5UOpHrl8FAmdkYsYUSIG0iyue9sZeUHvesWbe76VQ13832A2zlLw9mqN9CgbzlK87Ys0582LZmu0UWivx4AWlg00nIWCHiSC');
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 
 const PricingCard = ({ planName, planId, price, features, bgClass }) => {
   const handleSubscribe = async () => {
     try {
       // 1. Fetch current user from the backend
-      const userRes = await fetch('http://localhost:3001/api/user', {
+      const userRes = await fetch(`${API_BASE_URL}/api/user`, {
         credentials: 'include'
       });
 
@@ -24,7 +25,7 @@ const PricingCard = ({ planName, planId, price, features, bgClass }) => {
       console.log("User email:", email);
 
       // 3. Create Stripe Checkout session
-      const response = await fetch('http://localhost:3001/api/stripe/create-checkout-session', {
+      const response = await fetch(`${API_BASE_URL}/api/stripe/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

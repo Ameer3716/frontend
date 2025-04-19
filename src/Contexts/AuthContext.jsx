@@ -1,6 +1,6 @@
 // src/contexts/AuthContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 export const AuthContext = createContext({
   user: null,
   loading: true,
@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/user', {
+      const response = await fetch(`${API_BASE_URL}/api/user`, {
         credentials: 'include', // ensure cookies are sent
       });
       if (response.ok) {

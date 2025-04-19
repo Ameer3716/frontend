@@ -17,7 +17,7 @@ import CTASection from "./CTASection";
 import Footer from "./Footer";
 
 const { Title, Text } = Typography;
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 // Connect to Socket.IO via proxy
 const socket = io({
   path: "/socket.io",
@@ -178,14 +178,17 @@ const CallDashboard = () => {
 
   // Fetch call logs from backend
   useEffect(() => {
-    fetch("/api/calls")
-      .then(res => res.json())
-      .then(data => setCalls(data))
-      .catch(err => {
-        console.error("Failed to fetch calls:", err);
-        notification.error({ message: "Failed to load call logs" });
-      });
-  }, []);
+    fetch(`${API_BASE_URL}/api/calls`, { credentials: 'include' }) // Use template literal
+        .then(res => {
+            if (!res.ok) { throw new Error(`HTTP error! status: ${res.status}`); }
+            return res.json();
+        })
+        .then(data => setCalls(data))
+        .catch(err => {
+            console.error("Failed to fetch calls:", err);
+            notification.error({ message: "Failed to load call logs", description: err.message });
+        });
+}, []);
 
   // Listen for real-time updates
   useEffect(() => {
@@ -216,87 +219,87 @@ const CallDashboard = () => {
     };
   }, []);
 
-  // Outbound Call: Start call
   const startCall = async () => {
     if (!phoneNumber) {
-      notification.error({ message: "Please enter a valid phone number" });
-      return;
+        notification.error({ message: "Please enter a valid phone number" });
+        return;
     }
     try {
-      const res = await fetch("/api/calls/start", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber }),
-        credentials: "include"
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Call initiation failed");
-      notification.success({ message: "Call initiated" });
-      setPhoneNumber("");
+        const res = await fetch(`${API_BASE_URL}/api/calls/start`, { // Use template literal
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phoneNumber }),
+            credentials: "include"
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Call initiation failed");
+        notification.success({ message: "Call initiated" });
+        setPhoneNumber("");
     } catch (error) {
-      console.error("startCall error:", error);
-      notification.error({ message: error.message });
+        console.error("startCall error:", error);
+        notification.error({ message: error.message });
     }
-  };
+};
 
-  // Inbound Call Actions (Answer and Reject only)
-  const answerCall = async (callId) => {
+// Inbound Call Actions using dynamic base URL
+const answerCall = async (callId) => {
     setPendingActionCallId(callId);
     try {
-      const res = await fetch(`/api/calls/answer/${callId}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include"
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to answer call");
-      notification.success({ message: "Call answered" });
+        const res = await fetch(`${API_BASE_URL}/api/calls/answer/${callId}`, { // Use template literal
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include"
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to answer call");
+        notification.success({ message: "Call answered" });
     } catch (error) {
-      console.error("answerCall error:", error);
-      notification.error({ message: error.message });
+        console.error("answerCall error:", error);
+        notification.error({ message: error.message });
     } finally {
-      setPendingActionCallId(null);
+        setPendingActionCallId(null);
     }
-  };
+};
 
-  const rejectCall = async (callId) => {
+const rejectCall = async (callId) => {
     setPendingActionCallId(callId);
     try {
-      const res = await fetch(`/api/calls/reject/${callId}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include"
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to reject call");
-      notification.success({ message: "Call rejected" });
+        const res = await fetch(`${API_BASE_URL}/api/calls/reject/${callId}`, { // Use template literal
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include"
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to reject call");
+        notification.success({ message: "Call rejected" });
     } catch (error) {
-      console.error("rejectCall error:", error);
-      notification.error({ message: error.message });
+        console.error("rejectCall error:", error);
+        notification.error({ message: error.message });
     } finally {
-      setPendingActionCallId(null);
+        setPendingActionCallId(null);
     }
-  };
+};
 
-  // Outbound calls now only have the End Call button (transfer functionality removed)
-  const endCall = async (callId) => {
+// End Call using dynamic base URL
+const endCall = async (callId) => {
     setPendingActionCallId(callId);
     try {
-      const res = await fetch(`/api/calls/end/${callId}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include"
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to end call");
-      notification.success({ message: "Call ended" });
+        const res = await fetch(`${API_BASE_URL}/api/calls/end/${callId}`, { // Use template literal
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include"
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to end call");
+        notification.success({ message: "Call ended" });
     } catch (error) {
-      console.error("endCall error:", error);
-      notification.error({ message: error.message });
+        console.error("endCall error:", error);
+        notification.error({ message: error.message });
     } finally {
-      setPendingActionCallId(null);
+        setPendingActionCallId(null);
     }
-  };
+};
+
 
   const statusColors = {
     ringing: "blue",

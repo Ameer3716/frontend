@@ -4,7 +4,7 @@ import { Card, Typography, Spin, notification } from "antd";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import styled, { keyframes } from "styled-components";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 const { Title, Text } = Typography;
 
 const fadeIn = keyframes`
@@ -71,21 +71,24 @@ const CustomerDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch the subscription details for the current authenticated user
-    fetch("/api/subscriptions/me", { credentials: "include" })
+    fetch(`${API_BASE_URL}/api/subscriptions/me`, { credentials: "include" }) // Use template literal
       .then((res) => {
         if (!res.ok) {
-          throw new Error("No active subscription found");
+          if (res.status === 404) { // Specific handling for not found
+              console.log("No active subscription found for user.");
+              return null; // Return null to indicate no subscription
+          }
+          throw new Error(`Failed to fetch subscription: ${res.statusText}`);
         }
         return res.json();
       })
       .then((data) => {
-        setSubscription(data);
+        setSubscription(data); // data will be null if status was 404
         setLoading(false);
       })
       .catch((err) => {
         console.error("Failed to fetch subscription details:", err);
-        notification.error({ message: "Failed to load subscription details" });
+        notification.error({ message: "Failed to load subscription details", description: err.message });
         setLoading(false);
       });
   }, []);
