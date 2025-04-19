@@ -54,7 +54,7 @@ const Navbar = () => {
         )}
 
         {/* Link to Google OAuth */}
-        <a href="http://localhost:3001/auth/google" onClick={handleToggle}>
+        <a href="/auth/google" onClick={handleToggle}>
           <button className="navbar-btn">Login</button>
         </a>
       </div>
