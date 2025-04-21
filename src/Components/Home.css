@@ -27,12 +27,16 @@
   color: #f0f4f8; /* Lighter color for heading */
   font-weight: 800;
   letter-spacing: -1px;
+  opacity: 0;
+    animation: fadeInDown 0.8s ease-out forwards;
 }
 
 .hero p {
   font-size: 1.25rem;
   max-width: 800px;
   color: #f0f4f8;
+  opacity: 0;
+    animation: fadeInUp 0.8s 0.3s ease-out forwards;
 }
 
 /* Dashboard Preview Section */
@@ -191,30 +195,35 @@
   }
 }
 
-/* Scroll-to-Top Button */
 .scroll-to-top {
-  position: fixed;
+  position: fixed; /* Fixed position relative to viewport */
   bottom: 2rem;
   right: 2rem;
-  background-color: #e67e22;
+  background-color: #1a0b2e; /* Match dark theme element */
+  color: white;
   border: none;
-  padding: 0.75rem;
-  border-radius: 50%;
+  width: 50px;   /* Explicit size */
+  height: 50px;  /* Explicit size */
+  border-radius: 50%; /* Circular */
   cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex; /* Center icon */
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it's above other content */
+  opacity: 0.8; /* Slightly transparent */
 }
 
 .scroll-to-top:hover {
   transform: scale(1.1);
-  opacity: 0.9;
+  opacity: 1;
+  background-color: #3b1f7a; /* Slightly lighter purple on hover */
 }
 
+/* Style for the Lucide icon */
 .scroll-top-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: white;
-  display: inline-block;
-  text-align: center;
-  line-height: 1.5rem;
+  width: 1.5rem; /* 24px */
+  height: 1.5rem; /* 24px */
+  color: white; /* Ensure icon is white */
 }

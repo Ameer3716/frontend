@@ -15,7 +15,7 @@
     border-bottom-left-radius: 50px; /* Optional curve */
     border-bottom-right-radius: 50px; /* Optional curve */
     margin-bottom: 3rem; /* Space below hero */
-    margin-top: 100px;
+    margin-top: 90px;
   }
   
   .contact-hero h1 {
@@ -25,6 +25,8 @@
     /* Adding subtle text shadow for depth */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); 
     letter-spacing: -1px;
+    opacity: 0;
+    animation: fadeInDown 0.8s ease-out forwards;
   }
   
   .contact-hero p {
@@ -33,6 +35,8 @@
     margin: 0 auto; /* Center the paragraph */
     color: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
     line-height: 1.6;
+    opacity: 0;
+    animation: fadeInUp 0.8s 0.3s ease-out forwards;
   }
   
   /* --- Contact Main Section (Form & Image) --- */
@@ -202,6 +206,37 @@
     font-size: 0.95rem;
     color: #6b7280;
     line-height: 1.6;
+  }
+  .scroll-to-top {
+    position: fixed; /* Fixed position relative to viewport */
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #1a0b2e; /* Match dark theme element */
+    color: white;
+    border: none;
+    width: 50px;   /* Explicit size */
+    height: 50px;  /* Explicit size */
+    border-radius: 50%; /* Circular */
+    cursor: pointer;
+    display: flex; /* Center icon */
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it's above other content */
+    opacity: 0.8; /* Slightly transparent */
+  }
+  
+  .scroll-to-top:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    background-color: #3b1f7a; /* Slightly lighter purple on hover */
+  }
+  
+  .scroll-top-icon {
+    width: 1.5rem; /* 24px */
+    height: 1.5rem; /* 24px */
+    color: white; /* Ensure icon is white */
   }
   
   /* --- Responsive Adjustments --- */

@@ -46,10 +46,10 @@ const Navbar = () => {
         <Link to="/pricing" className="navbar-link navbar-link-bold" onClick={handleToggle}>
           Pricing
         </Link>
-        <Link to="/about" className="navbar-link" onClick={handleToggle}>
-        About Us
+        <Link to="/Contact" className="navbar-link" onClick={handleToggle}>
+        Contact Us
        </Link>
-
+       <Link to="/about" className="navbar-link">About Us</Link>
         {isAuthenticated && isSubscribed && (
           <Link to="/dashboard" className="navbar-link" onClick={handleToggle}>
             Dashboard

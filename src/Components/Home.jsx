@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar';
-import CTASection from './CTASection';
-import Footer from './Footer';
+import Navbar from './Navbar'; // Adjust path if needed
+import CTASection from './CTASection'; // Adjust path if needed
+import Footer from './Footer'; // Adjust path if needed
+import { ArrowUp } from 'lucide-react'; // <-- Import ArrowUp icon
 import './Home.css';
 
 const Home = () => {
@@ -25,11 +26,12 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
+    <div className="home"> {/* Consider adding style={{ position: 'relative' }} if needed */}
 
       {/* Hero Section */}
       <section className="hero">
-        <h1>Revolutionize Your Customer Experience</h1>
+       {/* ... content ... */}
+         <h1>Revolutionize Your Customer Experience</h1>
         <p>
           Harness the power of AI to manage calls, enhance interactions, and drive growth around the clock.
         </p>
@@ -37,6 +39,7 @@ const Home = () => {
 
       {/* Dashboard Preview Section */}
       <section className="dashboard-preview">
+       {/* ... content ... */}
         <div className="dashboard-overlay">
           <h2>Real-Time Insights</h2>
           <p>Monitor live interactions and data as they happen to drive faster decisions.</p>
@@ -49,7 +52,8 @@ const Home = () => {
 
       {/* Welcome Section */}
       <section className="welcome">
-        <div className="welcome-content">
+       {/* ... content ... */}
+         <div className="welcome-content">
           <h2>Welcome to the Future of Communication</h2>
           <p>
             Embrace a revolutionary approach to call management. Our AI-driven platform redefines how you connect with customers—making every interaction smarter, faster, and more personalized.
@@ -63,6 +67,7 @@ const Home = () => {
 
       {/* How It Works Section */}
       <section className="how-it-works">
+       {/* ... content ... */}
         <div className="how-it-works-content">
           <h2>Seamless Automation in Action</h2>
           <p>
@@ -77,9 +82,11 @@ const Home = () => {
 
       {/* Features Section */}
       <section className="features">
-        <h2>What We Offer</h2>
+       {/* ... content ... */}
+         <h2>What We Offer</h2>
         <div className="features-grid">
-          <div className="feature-card">
+          {/* ... feature cards ... */}
+           <div className="feature-card">
             <h3>Instant Call Routing</h3>
             <p>
               Automatically direct each call to the most suitable team member for a faster response.
@@ -116,10 +123,11 @@ const Home = () => {
       {/* Footer Section */}
       <Footer />
 
-      {/* Scroll-to-Top Button */}
+      {/* Scroll-to-Top Button <-- MODIFIED */}
       {showScroll && (
-        <button className="scroll-to-top" onClick={scrollToTop}>
-          <span className="scroll-top-icon">&#8679;</span>
+        <button onClick={scrollToTop} className="scroll-to-top" aria-label="Scroll to top">
+          {/* Replace span with ArrowUp component */}
+          <ArrowUp className="scroll-top-icon" />
         </button>
       )}
     </div>
