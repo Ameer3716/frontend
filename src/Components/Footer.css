@@ -1,24 +1,28 @@
+/* Footer.css */
+
 .footer {
   background: linear-gradient(135deg, #E0EAFC, #CFDEF3);  /* Soft pastel blue gradient */
   color: #2C3E50;            /* Dark blue-gray for contrast */
   padding: 3rem 0;
   border-radius: 30px;
+  margin-top: 2rem; /* Add some space above the footer */
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.5rem; /* Default padding for larger screens */
 }
 
 .footer-grid {
   display: grid;
+  /* Default: two equal columns on larger screens */
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 2rem; /* Gap between columns */
 }
 
 .footer-brand {
-  /* Additional styling for the brand column if needed */
+  /* No specific desktop styles needed beyond grid placement */
 }
 
 .footer-logo {
@@ -41,32 +45,42 @@
 }
 
 .footer-description {
-  color: #7a9292;  /* Muted gray for softer text */
+  color: #5a6a7a;  /* Adjusted for slightly better readability */
+  line-height: 1.6; /* Improve readability */
 }
 
 .footer-socials {
   display: flex;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem; /* Increased top margin */
 }
 
 .footer-social-link {
   color: #2C3E50;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease; /* Add transform transition */
+  display: inline-block; /* Needed for transform */
 }
 
 .footer-social-link:hover {
   color: #2980B9;
+  transform: scale(1.1); /* Slight scale effect on hover */
 }
 
+/* Ensure icons inside links inherit color and are sized */
+.footer-social-icon {
+    width: 1.5rem; /* Example size */
+    height: 1.5rem; /* Example size */
+}
+
+
 .footer-contact {
-  /* Additional styling for the contact column if needed */
+  /* No specific desktop styles needed beyond grid placement */
 }
 
 .footer-heading {
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 600; /* Slightly less bold */
   margin-bottom: 1rem;
   color: #2C3E50;
 }
@@ -74,4 +88,86 @@
 .footer-text {
   margin-bottom: 0.5rem;
   color: #2C3E50;
+  line-height: 1.6;
+}
+
+
+/* ------------- Media Queries for Responsiveness ------------- */
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .footer-grid {
+    gap: 1.5rem; /* Slightly reduce gap */
+  }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .footer {
+    padding: 2rem 0; /* Reduce overall padding */
+    border-radius: 20px; /* Less pronounced rounding */
+  }
+
+  .footer-grid {
+    /* Stack the columns */
+    grid-template-columns: 1fr;
+    gap: 2rem; /* Increase gap slightly when stacked */
+    text-align: center; /* Center align content within stacked columns */
+  }
+
+  .footer-container {
+    padding: 0 1rem; /* Reduce container padding */
+  }
+
+  .footer-logo {
+    justify-content: center; /* Center the logo items */
+  }
+
+  .footer-socials {
+    justify-content: center; /* Center the social icons */
+    margin-top: 1rem;
+  }
+
+  .footer-contact {
+     margin-top: 1rem; /* Add some space above contact info when stacked */
+  }
+
+  .footer-heading {
+     font-size: 1.15rem; /* Slightly smaller headings */
+  }
+
+  .footer-logo-text {
+     font-size: 1.4rem; /* Slightly smaller logo text */
+  }
+
+   .footer-description, .footer-text {
+     font-size: 0.95rem; /* Slightly smaller text */
+   }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .footer {
+    padding: 1.5rem 0; /* Even less padding */
+  }
+   .footer-container {
+    padding: 0 0.75rem;
+  }
+   .footer-grid {
+     gap: 1.5rem; /* Reduce gap again */
+   }
+    .footer-heading {
+     font-size: 1.1rem;
+  }
+
+  .footer-logo-text {
+     font-size: 1.3rem;
+  }
+   .footer-description, .footer-text {
+     font-size: 0.9rem;
+   }
+   .footer-social-icon {
+     width: 1.3rem;
+     height: 1.3rem;
+   }
 }

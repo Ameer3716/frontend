@@ -7,6 +7,12 @@
   background-color: #200f36;
   border-radius: 10px;
   color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  margin: 10px;
 }
 
 /* Navbar Brand: icon + text */
@@ -14,6 +20,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  z-index: 1011;
+  margin-left: 40px;
 }
 
 .navbar-icon {
@@ -70,7 +78,7 @@
 
 /* Hamburger Toggle (Menu / X) */
 .navbar-toggle {
-  display: none;            /* hidden on desktop */
+  display: none;
   font-size: 2rem;
   cursor: pointer;
 }
@@ -82,16 +90,17 @@
   /* Show the hamburger toggle */
   .navbar-toggle {
     display: block;
+    margin-right: 8px;
   }
 
   /* Mobile menu: hide by default */
   .navbar-menu {
     position: absolute;
-    top: 70px;          /* adjust this value if your navbar height changes */
-    left: 0;            /* Position the menu to the left */
+    top: 70px;
+    left: 0;
     flex-direction: column;
     background-color: #200f36;
-    width: 100%;        /* span the full width */
+    width: 100%;
     max-height: 0;
     overflow: hidden;
     border-radius: 0 0 10px 10px;
@@ -101,7 +110,7 @@
 
   /* Expand the menu when active */
   .navbar-menu.active {
-    max-height: 300px;  /* ensure this height fits all your links */
+    max-height: 300px;
   }
 
   /* Optional: Make each link take full width for better mobile UX */
