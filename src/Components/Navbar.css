@@ -111,7 +111,7 @@
 
   /* Expand the menu when active */
   .navbar-menu.active {
-    max-height: 300px;
+    max-height: 350px;
   }
 
   /* Optional: Make each link take full width for better mobile UX */
@@ -120,5 +120,6 @@
     width: 100%;
     text-align: left;
     padding: 0.5rem 0.5rem;
+    margin-bottom: 5px;
   }
 }
