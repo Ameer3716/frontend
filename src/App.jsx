@@ -11,6 +11,7 @@ import CallDashboard from './Components/CallDashboard';
 import CallDetails from './Components/CallDetails';
 import CustomerDetails from './Components/CustomerDetails';
 import ProtectedRoute from './Components/ProtectedRoute';
+import AboutPage from './Components/ContactPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/success" element={<SuccessPage />} />
           <Route
