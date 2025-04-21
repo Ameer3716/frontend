@@ -88,38 +88,99 @@
 
 /* When the screen is 768px or narrower */
 @media (max-width: 768px) {
+
   /* Show the hamburger toggle */
   .navbar-toggle {
-    display: block;
-    margin-right: 8px;
+    display: block; /* Changed to block */
+    margin-right: 1rem; /* Added some margin */
+    z-index: 1012; /* Ensure toggle is above menu content */
+    color: #eee; /* Ensure icon color */
+    padding: 0.5rem; /* Add padding for easier tapping */
+    line-height: 0; /* Prevent extra space */
+    background: none; /* Ensure no background */
+    border: none; /* Ensure no border */
+  }
+  .navbar-toggle svg { /* Style the icon directly */
+     width: 28px;
+     height: 28px;
   }
 
-  /* Mobile menu: hide by default */
+  /* Mobile menu: hide by default using transform */
   .navbar-menu {
     position: absolute;
-    top: 70px;
+    top: 100%; /* Position directly below the navbar */
     left: 0;
+    right: 0; /* Ensure full width */
     flex-direction: column;
-    background-color: #200f36;
+    background-color: #2a1a47; /* Slightly different dropdown background */
     width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    border-radius: 0 0 10px 10px;
-    padding: 0 1rem;
-    z-index: 1001;
+
+    /* Hide using transform and opacity */
+    opacity: 0;
+    transform: translateY(-10px); /* Start slightly above (hidden) */
+    visibility: hidden; /* Hide from accessibility tree */
+
+    overflow: hidden; /* Still needed for border-radius if you add it */
+    border-radius: 0 0 10px 10px; /* Optional rounding */
+    padding: 1rem 0; /* Vertical padding */
+    z-index: 1011; /* Below toggle, above page content */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add shadow */
+    border-top: 1px solid #4a2c7a; /* Separator line */
+
+    /* Smooth transition for opacity and transform */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0s linear 0.3s; /* Delay hiding visibility */
   }
 
   /* Expand the menu when active */
   .navbar-menu.active {
-    max-height: 350px;
+    opacity: 1;
+    transform: translateY(0); /* Slide into view */
+    visibility: visible; /* Make visible */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0s linear 0s; /* Show visibility immediately */
   }
 
-  /* Optional: Make each link take full width for better mobile UX */
-  .navbar-link,
-  .navbar-btn {
-    width: 100%;
+  /* Style individual links/button for mobile */
+  .navbar-menu .navbar-link,
+  .navbar-menu a[href="/auth/google"], /* Target the login anchor tag */
+  .navbar-menu a[href="/auth/logout"] { /* Target the logout anchor tag */
+    display: block; /* Make them block elements */
+    width: auto; /* Let them size naturally */
     text-align: left;
-    padding: 0.5rem 0.5rem;
-    margin-bottom: 5px;
+    padding: 0.8rem 1.5rem; /* Consistent padding */
+    margin: 0 1rem 0.5rem 1rem; /* Add horizontal margin and some bottom space */
+    border-radius: 6px; /* Slightly rounded corners */
+    transition: background-color 0.2s ease;
+    color: #eee; /* Ensure link text is visible */
+    font-weight: 500; /* Adjust weight for mobile if desired */
   }
-}
+
+  /* Hover effect for mobile links */
+  .navbar-menu .navbar-link:hover,
+  .navbar-menu a[href="/auth/google"]:hover,
+  .navbar-menu a[href="/auth/logout"]:hover {
+      background-color: rgba(255, 255, 255, 0.08); /* Subtle hover */
+      color: #fff;
+  }
+
+  /* Style the button specifically within the mobile menu */
+  .navbar-menu .navbar-btn { /* Target the button element */
+    width: 100%; /* Full width within its container */
+    /* width: calc(100% - 3rem); */ /* Old calc if needed, but full width is often better */
+    margin: 0; /* Remove margin from button itself, rely on anchor tag margin */
+    text-align: center; /* Center text in button */
+    padding: 0.8rem 1rem; /* Adjust padding */
+    display: block; /* Ensure it takes width */
+    /* Inherit font sizes etc. or set explicitly */
+  }
+
+   /* Remove bottom margin from the last link/button wrapper inside mobile menu */
+  .navbar-menu > *:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Remove padding from anchor if it only contains a button */
+   .navbar-menu a:has(.navbar-btn) {
+     padding: 0.5rem 1rem; /* Adjust overall padding for button container */
+   }
+
+} /* End of @media query */
