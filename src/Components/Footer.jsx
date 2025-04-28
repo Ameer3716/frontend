@@ -29,7 +29,7 @@ const Footer = () => {
             <p className="footer-text">+1 (123) 456-7890</p>
             <p className="footer-text">support@calease.com</p>
             <h3 className="footer-heading">Our Location</h3>
-            <p className="footer-text">San Francisco, CA</p>
+            <p className="footer-text">Uk , London</p>
           </div>
         </div>
       </div>
