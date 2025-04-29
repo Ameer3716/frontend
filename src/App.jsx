@@ -13,7 +13,7 @@ import CustomerDetails from './Components/CustomerDetails';
 import ProtectedRoute from './Components/ProtectedRoute';
 import ContactPage from './Components/ContactPage';
 import AboutPage from './Components/AboutPage';
-
+import ChatbotPage from './Components/ChatbotPage';
 function App() {
   return (
     <AuthProvider>
@@ -36,6 +36,7 @@ function App() {
             <Route index element={<CallDashboard />} />
             <Route path="calldetails" element={<CallDetails />} />
             <Route path="customerdetails" element={<CustomerDetails />} />
+            <Route path="chatbot" element={<ChatbotPage />} />
           </Route>
           {/* Fallback route */}
           <Route path="*" element={<Navigate to="/" replace />} />
