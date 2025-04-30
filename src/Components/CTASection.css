@@ -45,3 +45,87 @@
 .cta-btn:hover {
   opacity: 0.9;
 }
+/* Add these styles to CTASection.css */
+
+/* --- Video Modal Styles --- */
+.video-modal-overlay {
+  position: fixed; /* Cover the whole screen */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75); /* Dim background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050; /* Ensure it's above other content like navbar */
+  padding: 1rem; /* Add padding for smaller screens */
+  opacity: 0; /* Start hidden for fade-in */
+  animation: fadeInOverlay 0.3s ease forwards; /* Fade-in animation */
+}
+
+.video-modal-content {
+  background-color: #fff;
+  padding: 1rem; /* Padding around the video */
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  position: relative; /* For positioning the close button */
+  width: 90%; /* Responsive width */
+  max-width: 800px; /* Max width for the video */
+  /* Aspect ratio for the video container will handle height */
+  transform: scale(0.9); /* Start slightly small for pop-in effect */
+  opacity: 0; /* Start hidden */
+  animation: fadeInModal 0.4s 0.1s ease-out forwards; /* Pop-in animation */
+}
+
+.video-modal-close-btn {
+  position: absolute;
+  top: -15px; /* Position slightly outside the top-right */
+  right: -15px;
+  background-color: #333;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 0;
+  z-index: 1051; /* Above modal content */
+  transition: background-color 0.2s ease;
+}
+
+.video-modal-close-btn:hover {
+  background-color: #ff0000; /* Red on hover */
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  background-color: #000; /* Black background while loading */
+  border-radius: 4px; /* Slight rounding inside */
+}
+
+.video-container iframe,
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Animations --- */
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.9) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
