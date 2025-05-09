@@ -110,7 +110,6 @@ const ContactPage = () => {
                     required
                   >
                     <option value="" disabled>Select a Package</option>
-                    <option value="starter">Starter</option>
                     <option value="pro">Pro</option>
                     <option value="growth">Growth</option>
                     <option value="agency">Agency</option>
