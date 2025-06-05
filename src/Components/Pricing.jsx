@@ -17,7 +17,7 @@ const pricingPlans = [
     features: [
       'Complete Inbound & Outbound Handling',
       'Automated Appointment Scheduling',
-      '10 Simultaneous Connections',
+      '10 Concurrent Connections',
       'Seamless CRM Synchronization',
       'Enhanced Reporting Suite'
     ]
@@ -30,7 +30,7 @@ const pricingPlans = [
       'All Pro Features Included',
       'Customizable AI Responses',
       'Advanced Call Routing',
-      '25 Simultaneous Connections',
+      '25 Concurrent Connections',
       'Team Collaboration Dashboard'
     ]
   },
