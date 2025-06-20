@@ -294,10 +294,14 @@
   
   .features-benefits-image img {
     display: block;
-    width: 100%;
-    max-width: 500px; /* Limit image size */
-    margin: 0 auto; /* Center image if smaller than column */
+    width: 700px;
+    height: 600px;
+    object-fit: cover;
+    margin: 0 auto;
     border-radius: 12px;
+    position: relative;
+    top:30px;
+    left:10px;
   }
   
   

@@ -3,7 +3,7 @@ import Navbar from '../Components/Navbar'; // Adjust path if necessary
 import CTASection from '../Components/CTASection'; // Adjust path if necessary
 import Footer from '../Components/Footer'; // Adjust path if necessary
 import { Users, Target, Award, Rocket, Globe2, PhoneCall, CalendarCheck2, BrainCircuit, MessageSquareQuote, Facebook, Twitter, Youtube, ArrowUp } from 'lucide-react'; // ArrowUp is imported
-
+import rightimage from '../assets/rightimage.jpg'; // Adjust path if necessary
 import './AboutPage.css'; // Ensure CSS file exists and is linked
 
 const AboutPage = () => {
@@ -185,7 +185,7 @@ const AboutPage = () => {
                 </div>
                 {/* Right Image */}
                 <div className="features-benefits-image">
-                 <img src="https://img.freepik.com/free-vector/digital-marketing-abstract-background-concept_1017-45106.jpg?w=996&t=st=1716989575~exp=1716990175~hmac=80147240b28f856f660917607d12ae47d48e6e06837c8de068b7885a8dd2b3f2" alt="AI driving business growth and efficiency"/>
+                 <img src={rightimage}/>
                 </div>
             </div>
          </div>
