@@ -294,8 +294,8 @@
   
   .features-benefits-image img {
     display: block;
-    width: 700px;
-    height: 600px;
+    width: 600px;
+    height: 470px;
     object-fit: cover;
     margin: 0 auto;
     border-radius: 12px;

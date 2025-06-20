@@ -51,26 +51,24 @@ const ChatbotWrapper = styled.div`
 
 const ChatbotPage = () => {
   useEffect(() => {
-    console.log("ChatbotPage Mounted: Loading Botpress scripts...");
-    // --- Check if scripts ALREADY exist (e.g., from failed cleanup) ---
+    console.log("ChatbotPage Mounted: Loading NEW Botpress scripts...");
+    // Check if scripts ALREADY exist (e.g., from failed cleanup or HMR)
     const existingScript1 = document.getElementById("botpress-inject-script");
     const existingScript2 = document.getElementById("botpress-config-script");
     if (existingScript1 || existingScript2) {
         console.warn("Botpress scripts detected on mount - attempting cleanup first.");
-        // Attempt cleanup immediately in case previous unmount failed
-        removeBotpressElements();
+        removeBotpressElements(); // Attempt cleanup immediately
     }
-    // --- End Check ---
 
-
-    // --- Load Scripts ---
+    // --- Load NEW Scripts ---
     const script1 = document.createElement('script');
-    script1.src = "https://cdn.botpress.cloud/webchat/v2.4/inject.js";
-    script1.async = true;
+    script1.src = "https://cdn.botpress.cloud/webchat/v3.0/inject.js"; // <-- NEW SCRIPT URL
+    // script1.async = true; // defer is used on the script tag itself
+    script1.defer = true;   // <-- Added defer as per your example
     script1.id = "botpress-inject-script";
 
     const script2 = document.createElement('script');
-    script2.src = "https://files.bpcontent.cloud/2025/04/29/05/20250429054205-3NC2XNR1.js";
+    script2.src = "https://files.bpcontent.cloud/2025/06/19/06/20250619061559-E6W06VL3.js"; // <-- NEW SCRIPT URL
     script2.defer = true;
     script2.id = "botpress-config-script";
 
@@ -78,28 +76,27 @@ const ChatbotPage = () => {
     document.body.appendChild(script2);
     // --- End Load Scripts ---
 
-
-    // --- Cleanup Function ---
+    // --- Cleanup Function (remains the same) ---
     const removeBotpressElements = () => {
          console.log("Attempting to remove Botpress elements...");
          const addedScript1 = document.getElementById("botpress-inject-script");
          const addedScript2 = document.getElementById("botpress-config-script");
-         const webchatContainer = document.getElementById('botpress-webchat-container'); // Default container ID
-         const styleTags = document.querySelectorAll('style[data-emotion*="botpress"], style[id*="botpress"]'); // Find style tags injected by botpress/emotion
-         const widgetRoot = document.querySelector('.bp-widget-widget'); // Common class for the trigger button div
-         const widgetIframe = document.querySelector('iframe[title="Botpress Webchat"]'); // Iframe if used
+         const webchatContainer = document.getElementById('botpress-webchat-container');
+         const styleTags = document.querySelectorAll('style[data-emotion*="botpress"], style[id*="botpress"]');
+         const widgetRoot = document.querySelector('.bp-widget-widget');
+         const widgetIframe = document.querySelector('iframe[title="Botpress Webchat"]');
 
          if (addedScript1 && addedScript1.parentNode) {
             addedScript1.parentNode.removeChild(addedScript1);
             console.log("Removed Botpress inject script.");
          } else {
-             console.log("Inject script not found for removal.");
+             console.log("Inject script not found for removal or already removed.");
          }
          if (addedScript2 && addedScript2.parentNode) {
             addedScript2.parentNode.removeChild(addedScript2);
             console.log("Removed Botpress config script.");
          } else {
-             console.log("Config script not found for removal.");
+             console.log("Config script not found for removal or already removed.");
          }
           if (webchatContainer && webchatContainer.parentNode) {
             webchatContainer.parentNode.removeChild(webchatContainer);
@@ -119,28 +116,28 @@ const ChatbotPage = () => {
            } else {
                 console.log("Widget iframe not found for removal.");
            }
-          // Remove potentially injected styles
            styleTags.forEach(tag => {
                if (tag.parentNode) {
                    tag.parentNode.removeChild(tag);
                    console.log("Removed Botpress style tag.");
                }
            });
-           // Force hiding any lingering trigger button via CSS (less ideal)
            const lingeringWidget = document.querySelector('.bp-widget-widget');
            if (lingeringWidget) lingeringWidget.style.display = 'none';
-    }
+    };
 
     // Return the cleanup function to be called on unmount
     return () => {
-      console.log("ChatbotPage Unmounted: Running cleanup...");
+      console.log("ChatbotPage Unmounted: Running cleanup for NEW scripts...");
       removeBotpressElements();
     };
-  }, []); // Empty dependency array
+  }, []); // Empty dependency array ensures this runs once on mount and cleans up on unmount
+
   return (
     <ChatbotWrapper>
       <h2>Chat Assistant</h2>
       <p>Interact with our AI assistant below.</p>
+      {/* Botpress webchat typically injects its UI, so no specific container needed here unless their docs specify otherwise */}
     </ChatbotWrapper>
   );
 };
